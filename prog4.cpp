@@ -8,17 +8,21 @@ int main() {
     string filename = "chat.txt";
     string message;
 
-    ifstream infile(filename);
-    if (!infile.is_open()) {
-        cerr << "Error opening " << filename << endl;
+    ofstream outfile(filename, ios::app);
+    if (!outfile.is_open()) {
+        cerr << "Error opening " << filename << " for writing" << endl;
         return 1;
     }
 
-    while (getline(infile, message)) {
-        cout << "Sending message to prog4: " << message << endl;
+    cout << "Enter message to write to chat.txt (type 'exit' to quit):" << endl;
+    while (true) {
+        getline(cin, message);
+        if (message == "exit")
+            break;
+        outfile << message << endl;
     }
 
-    infile.close();
+    outfile.close();
 
     return 0;
 }
