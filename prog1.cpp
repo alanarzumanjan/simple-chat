@@ -15,11 +15,11 @@ int main() {
         cout << "Unable to open file." << endl;
         return 1;
     }
-    cout << "---Instructions---" << endl;
+    cout << endl << "-----Instructions-----" << endl;
     cout << "Enter address and lines format - @[name] [message]" << endl;
     cout << "Example: @Mark You are so smart!" << endl;
-    cout << "Names: Alan, Mark, Ilja, Martins" << endl << endl;
-
+    cout << "Names: Alan, Mark, Ilja, Martins" << endl;
+    cout << "----------------------" << endl << endl;
     do {
         cout << "==========Chat==========" << endl;
         while (getline(chat, lines)) {

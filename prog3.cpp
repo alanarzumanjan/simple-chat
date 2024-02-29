@@ -14,7 +14,7 @@ int main() {
     ofstream outfile(filename, ios::app);
 
     if (outfile.is_open()) {
-        outfile << message << endl;
+        outfile << "Ilja: " << message << endl;
         outfile.close();
         cout << "Message written to " << filename << endl;
     } else {
