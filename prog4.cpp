@@ -1,11 +1,12 @@
 // Martinš
+
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
 int main() {
-    string filename = "chat.txt";
+    string filename = "chat2.txt";
     string message;
 
     ofstream outfile(filename, ios::app);
