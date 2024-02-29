@@ -88,7 +88,7 @@ void write_private_message(){
 
 void check_global_chat(){
     ifstream chat("chat.txt");
-    for(short i=0; i < ; i++){
+    for(short i=0; i < i; i++){
 
     }
 }
