@@ -19,4 +19,5 @@ push:
 	git add .
 	git commit -a -m "Mama Markus"
 	git pull
+	git rebase
 	git push
