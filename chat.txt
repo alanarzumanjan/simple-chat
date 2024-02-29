@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-=======
-massage2
-m prog1!123
-123
-1111111
-
->>>>>>> 53bb550 (Mama Markus)

@@ -1,4 +1,4 @@
-TARGET = prog1
+TARGET = prog4
 SRC_FILE = $(TARGET).cpp
 
 CC = g++
