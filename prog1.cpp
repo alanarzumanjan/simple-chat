@@ -25,7 +25,7 @@ int main() {
         while (getline(chat, lines)) {
             cout << lines << endl;
         }
-        cout << "==========end==========" << endl << endl;
+        cout << "========================" << endl << endl;
 
         cout << "0 - Don't write" << endl;
         cout << "1 - Programm end" << endl;
