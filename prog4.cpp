@@ -1,13 +1,15 @@
 // Martinš
-
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
 int main() {
-    string filename = "chat2.txt";
+    string filename;
     string message;
+
+    cout << "Choose a chat file to write to (chat.txt or chat2.txt): ";
+    cin >> filename;
 
     ofstream outfile(filename, ios::app);
     if (!outfile.is_open()) {
@@ -15,7 +17,7 @@ int main() {
         return 1;
     }
 
-    cout << "Enter message to write to chat.txt (type 'exit' to quit):" << endl;
+    cout << "Enter message to write to " << filename << " (type 'exit' to quit):" << endl;
     while (true) {
         getline(cin, message);
         if (message == "exit")
