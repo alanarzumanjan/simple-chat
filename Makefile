@@ -19,8 +19,4 @@ push:
 	git add .
 	git commit -a -m "Mama Markus"
 	git pull
-<<<<<<< HEAD
 	git push
-=======
-	git push
->>>>>>> 052ea6f (Mama Markus)
