@@ -17,3 +17,5 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+//./test1 test2 "Hello from test1 to test2"
+//./test2 test1 "Hi back from test2 to test1"
