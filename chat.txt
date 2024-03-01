@@ -1,0 +1,8 @@
+Alan(G): Hello team!
+Alan(P) sent Mark: Hi Mark!
+Alan(G): Good morning everybody!
+Mark(P) sent Alan: Hi Alan! I love you!
+Mark(G): I am gay!
+Mark(G): I am Mark, I have a 5 dolar
+Mark(P) sent Alan: I love you Alan
+Alan(P) sent Mark: I want kill you
