@@ -6,15 +6,18 @@ using namespace std;
 
 int main() {
     string chat_name = "chat.txt";
-    fstream chat_file(chat_name);
+    fstream chat_file;
+    chat_file.open(chat_name, ios::app);
     if(chat_file.is_open()) {
         string message;
         cout << "Enter your message: ";
         getline(cin, message);
-        chat_file << message << endl;
+        chat_file << message << "\n";
         cout << "Message added to " << chat_name << ".\n" 
         << "Already recorded messages:" << endl;
         string line;
+        chat_file.close();
+        chat_file.open(chat_name);
         while(getline(chat_file, line)) {
             cout << line << endl;
         }
