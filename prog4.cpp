@@ -1,10 +1,13 @@
 // Martinš
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
-void writeMessage(const string& filename, const string& sender) {
+
+void writeMessage(const string& filename, const string& sender, const string& receiver, bool isPrivate) {
     ofstream outfile(filename, ios::app);
     if (!outfile.is_open()) {
         cerr << "Error opening " << filename << " for writing" << endl;
@@ -17,7 +20,13 @@ void writeMessage(const string& filename, const string& sender) {
         getline(cin, message);
         if (message == "exit")
             break;
-        outfile << "[" << sender << "]: " << message << endl;
+        
+        
+        if (isPrivate) {
+            outfile << sender << "(P) " << receiver << "" << message << endl;
+        } else {
+            outfile << sender << "(G) " << message << endl;
+        }
     }
 
     outfile.close();
@@ -26,33 +35,29 @@ void writeMessage(const string& filename, const string& sender) {
 int main() {
     string filename = "chat.txt";
     string sender;
+    int option;
 
     cout << "Enter your name: ";
     getline(cin, sender);
 
-    cout << "Choose an option:\n1. Write to chat\n2. Read chat\n";
-    int option;
+    cout << "Choose an option:\n1. Write to global chat\n2. Send a private message\n";
     cin >> option;
-    cin.ignore(); // Consume newline character
+    cin.ignore();
 
-    if (option == 1) {
-        writeMessage(filename, sender);
-    } else if (option == 2) {
-        ifstream infile(filename);
-        if (!infile.is_open()) {
-            cerr << "Error opening " << filename << " for reading" << endl;
-            return 1;
+    switch(option) {
+        case 1:
+            writeMessage(filename, sender, "", false);
+            break;
+        case 2: {
+            string receiver;
+            cout << "Enter receiver's name: ";
+            getline(cin, receiver);
+            writeMessage(filename, sender, receiver, true);
+            break;
         }
-
-        string line;
-        cout << "Chat Messages:" << endl;
-        while (getline(infile, line)) {
-            cout << line << endl;
-        }
-
-        infile.close();
-    } else {
-        cout << "Invalid option." << endl;
+        default:
+            cout << "Error." << endl;
+            break;
     }
 
     return 0;
