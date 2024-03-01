@@ -1,11 +1,9 @@
-// Martinš
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 
 using namespace std;
-
 
 void writeMessage(const string& filename, const string& sender, const string& receiver, bool isPrivate) {
     ofstream outfile(filename, ios::app);
@@ -15,21 +13,40 @@ void writeMessage(const string& filename, const string& sender, const string& re
     }
 
     string message;
-    cout << "Enter message to write to the chat (type 'exit' to quit):" << endl;
+    cout << "Enter message to write to the chat (type 'q' to quit):" << endl;
     while (true) {
         getline(cin, message);
-        if (message == "exit")
+        if (message == "q")
             break;
-        
-        
+
         if (isPrivate) {
-            outfile << sender << "(P) " << receiver << "" << message << endl;
+            outfile << sender << "(P) sent " << receiver << " - " << message << endl;
         } else {
-            outfile << sender << "(G) " << message << endl;
+            outfile << sender << "(G) - " << message << endl;
         }
     }
 
     outfile.close();
+}
+
+void displayMessages(const string& filename, const string& username, bool showGlobal) {
+    ifstream infile(filename);
+    if (!infile.is_open()) {
+        cerr << "Error opening " << filename << " for reading" << endl;
+        return;
+    }
+
+    string line;
+    cout << (showGlobal ? "Global Chat Messages:" : "Private Messages:") << endl;
+    while (getline(infile, line)) {
+        if (showGlobal && line.find("(G) - ") != string::npos) {
+            cout << line << endl;
+        } else if (!showGlobal && line.find("(P) sent " + username) != string::npos) {
+            cout << line << endl;
+        }
+    }
+
+    infile.close();
 }
 
 int main() {
@@ -40,7 +57,7 @@ int main() {
     cout << "Enter your name: ";
     getline(cin, sender);
 
-    cout << "Choose an option:\n1. Write to global chat\n2. Send a private message\n";
+    cout << "Choose an option:\n1. Write to global chat\n2. Send a private message\n3. Check messages\n";
     cin >> option;
     cin.ignore();
 
@@ -50,13 +67,17 @@ int main() {
             break;
         case 2: {
             string receiver;
-            cout << "Enter receiver's name: ";
+            cout << "Enter recipient's name: ";
             getline(cin, receiver);
             writeMessage(filename, sender, receiver, true);
             break;
         }
+        case 3:
+            displayMessages(filename, sender, true);
+            displayMessages(filename, sender, false);
+            break;
         default:
-            cout << "Error." << endl;
+            cout << "Invalid option." << endl;
             break;
     }
 
