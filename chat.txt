@@ -6,3 +6,5 @@ Mark(G): I am gay!
 Mark(G): I am Mark, I have a 5 dolar
 Mark(P) sent Alan: I love you Alan
 Alan(P) sent Mark: I want kill you
+Ilja(G): I like pizza
+Ilja(P) sent Alan: I want eat you!
